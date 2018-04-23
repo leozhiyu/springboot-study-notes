@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- pom文件的根元素，包含了一些约束 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- 指定了当前pom文件的版本 -->
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- 主项目的标识，用于定义当前maven属于哪一个项目(反写公司网址+项目名) -->
 	<groupId>com.leo</groupId>
+	<!-- 模块的标识(项目名+模块名) -->
 	<artifactId>girl</artifactId>
+	<!--
+	第一个0表示大版本号，第二个0表示分支版本号，第三个0表示小版本号
+	0.0.1
+	snapshot 快照版本
+	alpha 内部测试版本
+	beta 公测版本
+	release 稳定版本
+	GA 正式发布版本
+	 -->
 	<version>0.0.1-SNAPSHOT</version>
+	<!--
+	项目打包类型，默认是jar
+	war
+	zip
+	pom；表示主项目，用于管理子项目
+	...
+	 -->
 	<packaging>jar</packaging>
 
+	<!--用于生成文档-->
+	<!--项目描述名-->
 	<name>girl</name>
+	<!--项目描述-->
 	<description>Demo project for Spring Boot</description>
 
+	<!--用于表示对父模块的继承-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -24,15 +48,28 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<!--依赖列表-->
 	<dependencies>
+		<!--依赖项-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
+			<!--坐标-->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<!--
+			依赖的范围，表示在哪里起作用，test表示仅仅在test中起作用，在主代码中引用jar不起作用
+			compile：默认的范，编译测试运行都有效
+			provided：在编译和测试时有效
+			runtime：在测试和运行时有效
+			test：只在测试时有效
+			system：在编译和测试时有效，与本机系统相关联，可移植性差
+			import：导入的范围，它只使用在dependencyManagement中，表示从其他的pom中导入dependency的配置
+			-->
+
 			<scope>test</scope>
 		</dependency>
 
@@ -52,7 +89,9 @@
 		</dependency>
 	</dependencies>
 
+	<!--对构建行为提供相应的支持，经常使用plugins-->
 	<build>
+		<!--插件列表-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
